@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>シグナルワークス — 変化の兆しを見て、動く</title>
+<meta name="description" content="シグナルワークスは、SNS運用の内製化支援・Web制作・AIによる業務削減を提供する個人事務所です。まずは無料診断から。">
+<style>
+  :root {
+    --ink: #1a2333;
+    --ink-soft: #4a5568;
+    --accent: #0f6fde;
+    --accent-deep: #0a4fa3;
+    --bg: #ffffff;
+    --bg-alt: #f4f7fb;
+    --line: #dde5ef;
+    --radius: 14px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.85;
+    font-size: 16px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    position: sticky; top: 0;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+  }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; }
+  .brand { font-weight: 700; letter-spacing: .06em; font-size: 17px; }
+  .brand span { color: var(--accent); }
+  nav a {
+    color: var(--ink-soft); text-decoration: none; font-size: 14px; margin-left: 20px;
+  }
+  nav a:hover { color: var(--accent); }
+
+  .hero { padding: 88px 0 72px; }
+  .hero .kicker {
+    color: var(--accent); font-weight: 700; font-size: 14px; letter-spacing: .14em;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 5.4vw, 44px);
+    line-height: 1.4; font-weight: 700; letter-spacing: .02em;
+    margin-bottom: 22px;
+  }
+  .hero p { color: var(--ink-soft); max-width: 620px; }
+  .hero .cta-row { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; text-decoration: none; font-weight: 700; font-size: 15px;
+    padding: 13px 26px; border-radius: 999px; transition: .15s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-deep); }
+  .btn-ghost { border: 1.5px solid var(--line); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  section { padding: 72px 0; }
+  section.alt { background: var(--bg-alt); }
+  h2 {
+    font-size: clamp(22px, 3.6vw, 28px); margin-bottom: 10px; letter-spacing: .03em;
+  }
+  .lead { color: var(--ink-soft); margin-bottom: 40px; max-width: 640px; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .card {
+    background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 26px 24px;
+  }
+  .card .tag {
+    display: inline-block; font-size: 12px; font-weight: 700; color: var(--accent);
+    background: #e8f1fd; border-radius: 999px; padding: 3px 12px; margin-bottom: 14px;
+    letter-spacing: .05em;
+  }
+  .card h3 { font-size: 18px; margin-bottom: 10px; }
+  .card p { font-size: 14.5px; color: var(--ink-soft); }
+  .card .free {
+    margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--line);
+    font-size: 14px; font-weight: 700;
+  }
+  .card .free em { font-style: normal; color: var(--accent); }
+
+  .steps { counter-reset: step; display: grid; gap: 14px; max-width: 640px; }
+  .step {
+    display: flex; gap: 16px; align-items: flex-start;
+    background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    flex: 0 0 34px; height: 34px; border-radius: 50%;
+    background: var(--accent); color: #fff; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; font-size: 15px;
+    margin-top: 3px;
+  }
+  .step b { display: block; margin-bottom: 2px; }
+  .step p { font-size: 14.5px; color: var(--ink-soft); }
+
+  .about-box {
+    background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 28px; max-width: 640px;
+  }
+  .about-box dt { font-size: 13px; color: var(--ink-soft); margin-top: 14px; letter-spacing: .05em; }
+  .about-box dd { font-weight: 600; }
+  .about-box dt:first-child { margin-top: 0; }
+
+  .contact { text-align: center; }
+  .contact .lead { margin-left: auto; margin-right: auto; }
+  .contact .mail { font-size: 15px; color: var(--ink-soft); margin-top: 18px; }
+  .contact .mail a { color: var(--accent); font-weight: 700; text-decoration: none; }
+
+  footer {
+    border-top: 1px solid var(--line); padding: 28px 0; font-size: 13px; color: var(--ink-soft);
+  }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+  @media (max-width: 560px) {
+    nav a { margin-left: 14px; }
+    .hero { padding: 60px 0 48px; }
+    section { padding: 52px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">SIGNAL<span>WORKS</span></div>
+    <nav>
+      <a href="#services">サービス</a>
+      <a href="#flow">進め方</a>
+      <a href="#contact">無料診断</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">SIGNAL WORKS ｜ シグナルワークス</div>
+    <h1>変化の兆しを見て、動く。<br>小さな会社のデジタル参謀。</h1>
+    <p>シグナルワークスは、SNS運用の内製化支援・Web制作・AIによる業務削減を提供する個人事務所です。テンプレートの提案はしません。貴社の「今」を実際に拝見してから、効く一手だけをご提案します。まずは無料診断からどうぞ。</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#contact">無料診断を申し込む</a>
+      <a class="btn btn-ghost" href="#services">サービスを見る</a>
+    </div>
+  </div>
+</div>
+
+<section id="services" class="alt">
+  <div class="wrap">
+    <h2>3つの無料診断</h2>
+    <p class="lead">どのサービスも入口は無料診断です。貴社のアカウント・サイト・事業内容を実際に拝見し、具体的な改善点をレポートにしてお渡しします。売り込みのための一般論は書きません。</p>
+    <div class="cards">
+      <div class="card">
+        <div class="tag">SNS内製化支援</div>
+        <h3>SNS無料診断</h3>
+        <p>貴社のSNSアカウントを実際に拝見し、更新頻度・プロフィール導線・投稿の型・競合比較などから、効果の大きい改善点を選んでお伝えします。運用代行ではなく「社内で続けられる形」を作るのが専門です。</p>
+        <div class="free"><em>無料</em>：改善点3つの1枚レポート</div>
+      </div>
+      <div class="card">
+        <div class="tag">Web制作</div>
+        <h3>サイト健康診断</h3>
+        <p>貴社サイトをスマホ実機の目線で拝見し、表示の崩れ・問い合わせまでの導線・情報の鮮度・表示速度など「機会損失につながっているポイント」を特定します。LP・小規模サイトの新規制作にも対応します。</p>
+        <div class="free"><em>無料</em>：機会損失ポイント3つの1枚レポート</div>
+      </div>
+      <div class="card">
+        <div class="tag">AI業務削減</div>
+        <h3>AI化可能性チェック</h3>
+        <p>貴社の事業内容から、AIで自動化・時短できそうな業務を特定します。ツールを売るのではなく、貴社の業務に合わせた「使い方」を作ってお渡しします。各提案には浮く時間の目安と最初の一歩を添えます。</p>
+        <div class="free"><em>無料</em>：自動化できる業務3つの提案書</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="wrap">
+    <h2>進め方</h2>
+    <p class="lead">最初の連絡から納品まで、押し売りは一切ありません。診断を受け取って終わりでも大丈夫です。</p>
+    <div class="steps">
+      <div class="step"><div><b>無料診断のお申し込み</b><p>メールで会社名とサイトまたはSNSアカウントをお知らせください。</p></div></div>
+      <div class="step"><div><b>診断レポートのお渡し</b><p>実際に拝見して作成した1枚レポートをお送りします。ここまで完全無料です。</p></div></div>
+      <div class="step"><div><b>無料相談（ご希望の場合のみ）</b><p>レポートの内容をもとに、何をどこまでやるかを一緒に決めます。</p></div></div>
+      <div class="step"><div><b>ご依頼・納品</b><p>合意した範囲だけを、スピード重視で形にします。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!--
+  実績セクション: 掲載する実績（担当した案件・数字）はオーナー確認後に追加する。
+  未確認の実績を書いてはいけない（憲法・絶対ルール1）。
+<section class="alt" id="works">
+  <div class="wrap">
+    <h2>担当実績</h2>
+    <div class="cards"> ... </div>
+  </div>
+</section>
+-->
+
+<section class="alt" id="about">
+  <div class="wrap">
+    <h2>事務所概要</h2>
+    <p class="lead">小さく速く、を信条にした個人事務所です。だからこそ大手にはない速度と柔軟さでお手伝いできます。</p>
+    <div class="about-box">
+      <dl>
+        <dt>屋号</dt><dd>シグナルワークス（SIGNAL WORKS）</dd>
+        <dt>代表</dt><dd>畠山</dd>
+        <dt>事業内容</dt><dd>SNS運用の内製化支援 ／ Web制作（LP・小規模サイト） ／ AI活用による業務削減支援</dd>
+        <dt>連絡先</dt><dd><a href="mailto:tianshanyuan12@gmail.com" style="color:var(--accent);text-decoration:none;">tianshanyuan12@gmail.com</a></dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>無料診断のお申し込み</h2>
+    <p class="lead">メールに「会社名」と「サイトURL または SNSアカウント」をお書きのうえ、お送りください。2営業日以内に診断レポートの形でご返信します。</p>
+    <a class="btn btn-primary" href="mailto:tianshanyuan12@gmail.com?subject=%E7%84%A1%E6%96%99%E8%A8%BA%E6%96%AD%E5%B8%8C%E6%9C%9B">メールで申し込む</a>
+    <p class="mail">またはこちらへ直接どうぞ：<a href="mailto:tianshanyuan12@gmail.com">tianshanyuan12@gmail.com</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 シグナルワークス</div>
+    <div>変化の兆しを見て、動く。</div>
+  </div>
+</footer>
+
+</body>
+</html>
