@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>中小企業20社を実際に診断して分かった、機会損失の3つの型 — シグナルワークス</title>
+<meta name="description" content="中小企業20社のサイト・SNSを実際に拝見して作った診断レポート60項目を集計しました。いちばん多かったのは『露出はあるのに、それを自社に残す受け皿がない』型で、20社中19社に見つかりました。自分で確かめられる5分のセルフチェック付き。">
+<meta property="og:title" content="中小企業20社を実際に診断して分かった、機会損失の3つの型">
+<meta property="og:description" content="実際に作った診断レポート20本・60項目を集計した記事です。20社中19社に共通した型を書いています。">
+<meta property="og:type" content="article">
+<style>
+  :root {
+    --ink: #1a2333;
+    --ink-soft: #4a5568;
+    --accent: #0f6fde;
+    --accent-deep: #0a4fa3;
+    --bg: #ffffff;
+    --bg-alt: #f4f7fb;
+    --line: #dde5ef;
+    --radius: 14px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.95;
+    font-size: 16px;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    position: sticky; top: 0;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+  }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; max-width: 880px; }
+  .brand { font-weight: 700; letter-spacing: .06em; font-size: 17px; text-decoration: none; color: var(--ink); }
+  .brand span { color: var(--accent); }
+  nav a { color: var(--ink-soft); text-decoration: none; font-size: 14px; margin-left: 20px; }
+  nav a:hover { color: var(--accent); }
+
+  article { padding: 56px 0 40px; }
+  .kicker { color: var(--accent); font-weight: 700; font-size: 13px; letter-spacing: .14em; margin-bottom: 14px; }
+  h1 { font-size: clamp(25px, 4.6vw, 36px); line-height: 1.48; letter-spacing: .02em; margin-bottom: 18px; }
+  .meta { color: var(--ink-soft); font-size: 14px; border-bottom: 1px solid var(--line); padding-bottom: 22px; margin-bottom: 34px; }
+  article p { margin-bottom: 20px; }
+  article h2 {
+    font-size: clamp(19px, 3.2vw, 24px); line-height: 1.55; margin: 52px 0 6px;
+    padding-top: 26px; border-top: 1px solid var(--line); letter-spacing: .02em;
+  }
+  article h2 .num { display: block; font-size: 13px; color: var(--accent); letter-spacing: .14em; margin-bottom: 6px; }
+  article h3 { font-size: 17px; margin: 32px 0 8px; }
+  article ul, article ol { margin: 0 0 20px 1.3em; }
+  article li { margin-bottom: 9px; }
+  strong { font-weight: 700; }
+
+  .note {
+    background: var(--bg-alt); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 22px 24px; margin: 30px 0; font-size: 14.5px; color: var(--ink-soft);
+  }
+  .note b { color: var(--ink); }
+  .note p:last-child { margin-bottom: 0; }
+
+  .stat {
+    background: var(--bg-alt); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 18px 22px; margin: 26px 0; font-weight: 700; font-size: 17px; line-height: 1.7;
+  }
+
+  .check { counter-reset: c; list-style: none; margin-left: 0; }
+  .check li {
+    counter-increment: c; position: relative; padding-left: 44px; margin-bottom: 18px;
+  }
+  .check li::before {
+    content: counter(c); position: absolute; left: 0; top: 3px;
+    width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;
+  }
+  .check b { display: block; }
+  .check span { color: var(--ink-soft); font-size: 14.5px; }
+
+  .cta {
+    background: var(--bg-alt); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 34px 28px; margin: 56px 0 20px; text-align: center;
+  }
+  .cta h2 { border: 0; padding: 0; margin: 0 0 10px; }
+  .cta p { color: var(--ink-soft); font-size: 15px; max-width: 520px; margin: 0 auto 22px; }
+  .btn {
+    display: inline-block; text-decoration: none; font-weight: 700; font-size: 15px;
+    padding: 13px 26px; border-radius: 999px; transition: .15s;
+    background: var(--accent); color: #fff;
+  }
+  .btn:hover { background: var(--accent-deep); }
+  .cta .small { font-size: 13px; margin-top: 16px; margin-bottom: 0; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0; font-size: 13px; color: var(--ink-soft); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; max-width: 880px; }
+  footer a { color: var(--ink-soft); }
+
+  @media (max-width: 560px) {
+    nav a { margin-left: 14px; }
+    article { padding: 40px 0 30px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="./">SIGNAL<span>WORKS</span></a>
+    <nav>
+      <a href="./#services">サービス</a>
+      <a href="./#contact">無料診断</a>
+    </nav>
+  </div>
+</header>
+
+<article>
+  <div class="wrap">
+    <div class="kicker">READING ｜ 読みもの</div>
+    <h1>中小企業20社を実際に診断して分かった、<br>機会損失の3つの型</h1>
+    <p class="meta">2026年8月5日 ／ シグナルワークス 畠山元</p>
+
+    <p>2026年7月から8月にかけて、中小企業20社のサイトとSNSを実際に拝見し、1社ずつ診断レポートを作りました。指摘した項目は全部で60。業種はEC・D2C、工務店、雑貨・アパレル、映像機材、ギャラリー、育児用品メーカー、カーリース、伝統工芸ブランドなど、ばらばらです。</p>
+
+    <p>並べてみて驚いたのは、<strong>業種も規模も違うのに、つまずいている場所がほとんど同じだった</strong>ことでした。この記事では、その中でも数の多かった3つの型を書きます。最後に、自社で5分あれば確かめられるチェックリストを付けました。</p>
+
+    <div class="note">
+      <p><b>この記事の材料について</b></p>
+      <p>診断した企業名・具体的な数字・時期は、すべて伏せています。まだお取引のない会社の弱点を実名で公開することはしません。書いているのは「どういう型でつまずくか」だけです。数の集計は、実際に作成した20本のレポートを数えたものです。</p>
+    </div>
+
+    <h2><span class="num">型 01</span>露出はあるのに、それを自社に残す「受け皿」がない</h2>
+
+    <div class="stat">20社中18社に、この型の指摘が1つ以上ありました。</div>
+
+    <p>いちばん多く、いちばん惜しかったのがこの型です。プレスリリースを打った、テレビや新聞に出た、クラウドファンディングで大きな支援が集まった、百貨店に出店した、POP-UPを開いた。<strong>外向きの「事件」は起きているのに、それを見て動いた人の着地先が用意されていない</strong>、という状態です。</p>
+
+    <p>実際に見つけた形は、たとえばこういうものでした。</p>
+
+    <ul>
+      <li>テレビや新聞で商品名を知った人が公式サイトに来ても、<strong>その商品のページがサイト内に1枚もない</strong>。購入リンクは過去のお知らせ記事の本文中に、テキストリンクとして埋まっているだけ</li>
+      <li>新商品の国内発売について報道記事は複数出ているのに、<strong>自社のサイトにもSNSにも、その発売の告知が1つも載っていない</strong></li>
+      <li>クラウドファンディングで大きな支援を集め、メディア掲載も複数あるのに、<strong>自社SNSのフォロワーは3桁</strong>。集まった人が全員プラットフォームの中に残り、次の新作の初速に使えない</li>
+      <li>会期が始まっているイベントについて、SNSでは告知しているのに、<strong>公式サイトからは会期の情報にたどり着けない</strong></li>
+      <li>会場やコラボ相手のアカウントの方がフォロワーが1桁多いのに、<strong>共同投稿やタグ付けをしておらず、そちらの読者に一度も届いていない</strong></li>
+    </ul>
+
+    <p>共通しているのは、<strong>お金も手間もかかる「認知を作る側」はやり切っているのに、ほとんどコストのかからない「受け止める側」が空いている</strong>ことです。プレスリリース1本、展示会1回、テレビ1回。それぞれに相当な労力がかかっています。その労力で連れてきた人が、着地する場所がなくて帰っている。</p>
+
+    <p>直し方は、たいてい新しく何かを始める話になりません。<strong>すでに持っている素材を、置く場所を変えるだけ</strong>です。商品一覧を1ページ作る。掲載記録の各行から、その商品のページへリンクを引く。イベント情報をサイトのトップに1行出す。SNSのプロフィール欄のリンク先を、今いちばん見てほしいページに変える。多くは1〜2時間の作業でした。</p>
+
+    <h2><span class="num">型 02</span>入口に出ている情報が、古いまま止まっている</h2>
+
+    <div class="stat">6社で、「いちばん人が通る場所」の情報が現在と食い違っていました。</div>
+
+    <p>サイトやSNSの中身が古いこと自体は、正直よくあることです。問題は、<strong>止まっている場所が「初めて来た人が最初に見る場所」だったとき</strong>です。実際に見つけたのは、こういう箇所でした。</p>
+
+    <ul>
+      <li><strong>検索結果に出る説明文</strong>が、サイト作成ツールが自動で入れる初期文（「どうぞごゆっくりご覧ください」のような、会社の説明が一文字も入っていない文）のまま。放送直後に社名で検索した人が最初に読む2行が、これになっている</li>
+      <li><strong>SNSのプロフィール文</strong>が、前回開催したイベントの表記のまま。次回の開幕まで1週間を切っている</li>
+      <li><strong>サイトに書かれた店舗数</strong>が、同じ会社が出したプレスリリースの数字と一致していない</li>
+      <li>いちばん見られる<strong>施工事例が約1年半、お知らせが約11ヶ月</strong>止まっている。会社は動いているのに、外から見ると止まって見える</li>
+    </ul>
+
+    <p>特に検索結果の説明文（meta description）は、見落とされやすい場所です。サイトを開けばきちんと作り込まれているのに、その手前の「検索結果の2行」にだけ何も書かれていない。<strong>いちばん人数が多い場所が、いちばん放置されている</strong>のがこの型です。ほとんどの場合、サイト作成ツールの管理画面から社内で直せます。</p>
+
+    <h2><span class="num">型 03</span>「指名検索」の受け皿を、他人に取られている</h2>
+
+    <p>会社名やブランド名で検索してくれる人は、いちばん確度の高いお客さんです。その人の着地先が自社になっていないケースがありました。</p>
+
+    <ul>
+      <li>ブランド名が一般的な単語に近く、<strong>検索すると同名の別ジャンルのサービスが上位を占める</strong>。商品名を覚えて検索してくれた人が、別の会社のページに着く（これは2社で起きていました）</li>
+      <li>プレスリリースやSNSのプロフィールに書かれている<strong>自社ドメインが、今アクセスすると404で止まっている</strong></li>
+      <li>会社のメールアドレスに使っているドメインを開くと、<strong>ブラウザの証明書警告や、真っ白なページが出る</strong>。取引先や採用応募者が会社を確かめようとして、最初に見る画面がそれになっている</li>
+      <li>公式サイトが無料の共有サブドメインのままで、<strong>「本物はここ」と言い切る根拠を、本文の注意書きだけに頼っている</strong>（実際に偽サイト被害に遭われていた会社です）</li>
+    </ul>
+
+    <p>独自ドメインは、世界でその会社しか持てないという意味で<strong>「本物であることの、いちばん安い証明」</strong>です。年に数千円の話で、サイトを作り直す必要もありません。それでも後回しにされがちなのは、困っている実感が出るのが「取引先が確かめようとしたとき」という、自分からは見えない場面だからだと思います。</p>
+
+    <h3>補足：技術面で多かったもの</h3>
+    <p>3つの型とは別に、スマホでの見え方について同じ指摘が繰り返し出ました。1つは<strong>ピンチ操作での拡大を無効にする指定</strong>（<code>user-scalable=no</code>）が入っていて、成分表示や利用条件のような小さい文字を拡大して読めない状態。もう1つは<strong>画像の遅延読み込み（<code>loading="lazy"</code>）が1件も設定されていない</strong>ページで、予約開始時刻などアクセスが集中する瞬間に、いちばん熱い流入が読み込み待ちで離脱してしまう状態です。どちらも修正は1行ずつです。</p>
+
+    <h2><span class="num">CHECK</span>5分でできるセルフチェック</h2>
+
+    <p>スマホを1台持って、以下を順にやってみてください。社内の誰でもできて、ツールは要りません。</p>
+
+    <ol class="check">
+      <li><b>自社名でスマホ検索して、説明文の2行を声に出して読む</b><span>そこに「何屋か」「どこにあるか」が入っていなければ、型02です。</span></li>
+      <li><b>直近のメディア掲載・プレスリリースで扱われた商品を、自社サイトのトップから探す</b><span>3クリックで着かなければ、型01です。</span></li>
+      <li><b>SNSのプロフィール文を読む</b><span>そこに書いてあるのが「今」でなければ、型02です。</span></li>
+      <li><b>名刺・リリース・SNSプロフィールに書いたURLを、実際に開く</b><span>404や警告が出れば、型03です。</span></li>
+      <li><b>サイトの「お知らせ」や「事例」の、いちばん新しい日付を見る</b><span>半年以上前なら、外からは止まって見えています。</span></li>
+    </ol>
+
+    <p>1つでも当てはまったなら、それは<strong>能力の問題ではなく、優先度の谷に落ちているだけ</strong>のことがほとんどです。診断した20社は、どこも本業では素晴らしい仕事をされている会社ばかりでした。「テレビで紹介された」「クラウドファンディングで目標を達成した」というのは、それ自体が本業の強さの証明です。良いものを作る力と、それが外から見えるように配線する作業は、まったく別の種類の仕事なのだと思います。</p>
+
+    <div class="cta">
+      <h2>無料診断をやっています</h2>
+      <p>貴社のサイトとSNSを実際に拝見して、この記事に書いたような「もったいないポイント」を3つ、1枚のレポートにしてお送りします。無料です。受け取って終わりでも構いません。テンプレートの一般論は書きません。</p>
+      <a class="btn" href="mailto:tianshan909@gmail.com?subject=%E7%84%A1%E6%96%99%E8%A8%BA%E6%96%AD%E5%B8%8C%E6%9C%9B%EF%BC%88%E8%A8%98%E4%BA%8B%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A7%EF%BC%89&amp;body=%E4%BC%9A%E7%A4%BE%E5%90%8D%EF%BC%9A%0D%0A%E3%82%B5%E3%82%A4%E3%83%88URL%20%E3%81%BE%E3%81%9F%E3%81%AF%20SNS%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%EF%BC%9A%0D%0A%E6%B0%97%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%93%E3%81%A8%EF%BC%88%E3%81%82%E3%82%8C%E3%81%B0%EF%BC%89%EF%BC%9A%0D%0A">メールで無料診断を申し込む</a>
+      <p class="small">2営業日以内に、診断レポートの形でご返信します。</p>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 シグナルワークス</div>
+    <div><a href="./">トップへ戻る</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
