@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://giverfrogcpu-lang.github.io/signalworks/sitemap.xml
